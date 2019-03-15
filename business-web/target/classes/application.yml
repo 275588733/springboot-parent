@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+#spring:
+#          datasource:
+#            master:
+#              driver-class-name: com.mysql.jdbc.Driver
+#              url: jdbc:mysql://127.0.0.1:3306/primary_database?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#              username: root
+#              password: zhoupeng
+#            slaver:
+#              driver-class-name: com.mysql.jdbc.Driver
+#              url: jdbc:mysql://127.0.0.1:3306/back_database?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#              username: root
+#              password: zhoupeng
+#        #spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/test
+#    username: root
+#    password: zhoupeng
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
