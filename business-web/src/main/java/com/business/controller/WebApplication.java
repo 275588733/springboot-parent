@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /*@SpringBootApplication
@@ -16,7 +17,7 @@ public class WebApplication {
 	}
 
 }*/
-
+@ImportResource(value = {"classpath:spring/spring-dubbo.xml"})
 @SpringBootApplication(exclude = {
 		DataSourceAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
