@@ -23,15 +23,46 @@
 	<description>parent</description>
 	<packaging>pom</packaging>
 
+	<properties>
+		<slf4j.version>1.7.25</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
+		<dubbo.version>2.6.6</dubbo.version>
+
+		<!--Apache Curator是一个比较完善的ZooKeeper客户端框架，通过封装的一套
+		高级API 简化了ZooKeeper的操作-->
+		<zookeeper.version>3.4.10</zookeeper.version>
+		<curator.version>2.12.0</curator.version>
+
+		<!--OkHttp是Square开源的轻量级框架，是一款现代、高效、快速的Android
+		版Http client-->
+		<okhttp.version>3.1.2</okhttp.version>
+		<!--Guava是一种基于开源的Java库，其中包含谷歌正在由他们很多项目使用
+		的很多核心库。这个库是为了方便编码，并减少编码错误。这个库提供用于集合，
+		缓存，支持原语，并发性，常见注解，字符串处理，I/O和验证的实用方法。-->
+		<guava.version>19.0</guava.version>
+		<!--一个面向 Java™ 平台的易于使用的开源时间/日期库。-->
+		<joda-time.version>2.9.9</joda-time.version>
+		<!--cglib是一个强大的，高性能，高质量的Code生成类库，它可以在运行期扩展Java
+		类与实现Java接口。Hibernate支持它来实现PO(Persistent Object 持久化
+		对象)字节码的动态生成。-->
+		<cglib.version>3.1</cglib.version>
+
+		<gson.version>2.6.2</gson.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+
+		<!--mysql数据库依赖-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+
+		<!--spring依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -49,14 +80,107 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.mybatis.spring.boot</groupId>-->
-			<!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
-			<!--<version>1.2.0</version>-->
-		<!--</dependency>-->
+
+		<!--log依赖包-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- joda-time依赖 -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+
+		<!-- dubbo依赖包 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>${dubbo.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>curator-framework</artifactId>
+					<groupId>org.apache.curator</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>curator-client</artifactId>
+					<groupId>org.apache.curator</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>spring-web</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- zookeeper start -->
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${curator.version}</version>
+		</dependency>
+
+		<!-- okhttp -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${okhttp.version}</version>
+		</dependency>
+
+		<!--guava-->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<!-- gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+
+		<!--cglib-->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>asm</artifactId>
+					<groupId>org.ow2.asm</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 </project>
